@@ -1,0 +1,53 @@
+Set up and run ExamSystem
+
+Steps:
+
+1. Unzip the distribute package. Read the read.me file which is this one.
+2. Install mysql server using default configurations.
+3. Install mySqlWorkbench application.
+4. Connect mySqlWorkbench and login as the root user.
+5. Create a schema (database) named as examsystem.
+6. Run examsys.sql in this directory to set up all the necessary tables,views and demo data. 
+	In mySqlWorkbench choose File->Run SQL Script...
+7. Using mySqlWorkbench to add a new user which is used by the program to access the mysql database. 
+	username: examsys
+	password: examsys
+	Then grant all privileges to the user.
+	In mySqlWorkbench, choose Server->Users and Privileges, then click Add Acount button.
+8. Run the ExamFrontendNew.jar (Assume you have installed the JRE correctly with path set)
+
+Demo data
+
+1. admin/admin is Role.Admin to have all the features, including maintain all users, problems, exams and reports.
+But take exam is not allowed.
+2. Teacher1/Teacher1 is Role.Teacher who can maintain students,problems, exams and reports. A teacher can see 
+all students' reports. A teacher cannot take exam.
+3. Teacher2/Teacher2 is same as Teacher2
+4. Student1/Student1 is Role.Student who can take exam and see only his/her reports.
+5. 4 Problems has been added. 
+6. 2 Exams has been added.
+7. No reports is added. Reports can be generated if a student take one of the exam.
+
+Logics to be noted.
+1. Menus are changed for different roles in order to restrict the role's functions.
+2. Admin can manage all users. Teacher can manage students.
+3. Only students can take exam.
+4. A fresh exam can be changed when it is not yet be taken by any students. When a student has taken the exam, 
+a report is automatically generated and thus the exam cannot be changed.
+5. If a student has taken an exam, he is not allowed to take that exam again. As a result the exam is not shown
+in the choosing list. But other student that has not taken the exam can still do it.
+6. Reports are auto generated thus can only be viewed. 
+7. Students are enrolled by admins or teachers, but they cannot register by themselves.
+8. All deleted users, exams problems are not actually deleted from the database. A 'deleted' status is set instead
+of actual deletion. In this way we can still access a report even the related student or the problems of the exam are 
+deleted. Same thing applies to all entries. But these 'deleted' entries will not shown in the selection lists.
+
+Features not implemented:
+1. Student self registration.
+2. Student modify his password and name.
+3. Teacher modify the reports.
+
+As a demo project it is quite sophisticated and complete. Enjoy it.
+
+
+

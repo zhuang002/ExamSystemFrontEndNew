@@ -41,14 +41,18 @@ public class ProfileJPanel extends javax.swing.JPanel {
 
         jLabel1.setText("Name");
 
+        jTextFieldName.setEnabled(false);
+
         jLabel2.setText("New Password");
 
         jPasswordFieldNewPassword.setToolTipText("");
+        jPasswordFieldNewPassword.setEnabled(false);
 
         jLabelConfirmPassword.setText("Confirm Password");
 
-        jButtonUpdate.setText("Update");
-        jButtonUpdate.setEnabled(false);
+        jPasswordFieldConfirmPassword.setEnabled(false);
+
+        jButtonUpdate.setText("Change");
         jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonUpdateActionPerformed(evt);
@@ -57,6 +61,11 @@ public class ProfileJPanel extends javax.swing.JPanel {
 
         jButtonCancel.setText("Cancel");
         jButtonCancel.setEnabled(false);
+        jButtonCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -107,15 +116,27 @@ public class ProfileJPanel extends javax.swing.JPanel {
 
     private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
         // TODO add your handling code here:
-        if (this.jPasswordFieldConfirmPassword.getText().trim().equals(this.jPasswordFieldNewPassword.getText().trim())) {
-            JOptionPane.showMessageDialog(Global.mainFrame, "The passwords are not identical");
-            return;
+
+        if (this.jButtonUpdate.getText().equals("Change")) {
+            this.setReadOnly(false);
+            this.jButtonUpdate.setText("Update");
+        } else {
+            if (!this.jPasswordFieldConfirmPassword.getText().trim().equals(this.jPasswordFieldNewPassword.getText().trim())) {
+                JOptionPane.showMessageDialog(Global.mainFrame, "The passwords are not identical");
+                return;
+            }
+            User user = this.retrieveUser();
+            
+            user.update(!this.jPasswordFieldNewPassword.getText().isBlank());
+            Global.currentUser = user;
+            reload();
         }
-        User user = this.retrieveUser();
-        user.update();
-        Global.currentUser=user;
-        reload();
     }//GEN-LAST:event_jButtonUpdateActionPerformed
+
+    private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
+        // TODO add your handling code here:
+        this.reload();
+    }//GEN-LAST:event_jButtonCancelActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -130,11 +151,11 @@ public class ProfileJPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private User retrieveUser() {
-        User user=Global.currentUser;
+        User user = new User();
+        user.setUserName(Global.currentUser.getUserName());
+        user.setRole(Global.currentUser.getRole());
         user.setName(this.jTextFieldName.getText());
-        if (!this.jPasswordFieldNewPassword.getText().isBlank()) {
-            user.setPassword(this.jPasswordFieldNewPassword.getText());
-        } 
+        user.setPassword(this.jPasswordFieldNewPassword.getText());
         return user;
     }
 
@@ -142,7 +163,14 @@ public class ProfileJPanel extends javax.swing.JPanel {
         this.jTextFieldName.setText(Global.currentUser.getName());
         this.jPasswordFieldConfirmPassword.setText("");
         this.jPasswordFieldNewPassword.setText("");
-        this.jButtonCancel.setEnabled(false);
-        this.jButtonUpdate.setEnabled(false);
+        this.jButtonUpdate.setText("Change");
+        this.setReadOnly(true);
+    }
+
+    private void setReadOnly(boolean b) {
+        this.jTextFieldName.setEnabled(!b);
+        this.jPasswordFieldConfirmPassword.setEnabled(!b);
+        this.jPasswordFieldNewPassword.setEnabled(!b);
+        this.jButtonCancel.setEnabled(!b);
     }
 }

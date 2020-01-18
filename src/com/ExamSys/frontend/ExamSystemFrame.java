@@ -38,10 +38,12 @@ public class ExamSystemFrame extends javax.swing.JFrame {
         usersJPanel = new com.ExamSys.frontend.UsersJPanel();
         problemsJPanel = new com.ExamSys.frontend.ProblemsJPanel();
         studentReportPanel = new com.ExamSys.frontend.StudentReportPanel();
+        profileJPanel = new com.ExamSys.frontend.ProfileJPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuUsers = new javax.swing.JMenu();
         jMenuItemLogin = new javax.swing.JMenuItem();
         jMenuItemLogout = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItemAdmins = new javax.swing.JMenuItem();
         jMenuItemTeachers = new javax.swing.JMenuItem();
         jMenuItemStudents = new javax.swing.JMenuItem();
@@ -64,8 +66,10 @@ public class ExamSystemFrame extends javax.swing.JFrame {
         getContentPane().add(usersJPanel, "Users");
         getContentPane().add(problemsJPanel, "Problems");
         getContentPane().add(studentReportPanel, "StudentsReport");
+        getContentPane().add(profileJPanel, "Profile");
 
-        jMenuUsers.setText("Users");
+        jMenuUsers.setText("User");
+        jMenuUsers.setToolTipText("");
 
         jMenuItemLogin.setText("Login");
         jMenuUsers.add(jMenuItemLogin);
@@ -77,6 +81,15 @@ public class ExamSystemFrame extends javax.swing.JFrame {
             }
         });
         jMenuUsers.add(jMenuItemLogout);
+
+        jMenuItem1.setText("Profile");
+        jMenuItem1.setToolTipText("");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenuUsers.add(jMenuItem1);
 
         jMenuItemAdmins.setText("Admins");
         jMenuItemAdmins.addActionListener(new java.awt.event.ActionListener() {
@@ -229,6 +242,13 @@ public class ExamSystemFrame extends javax.swing.JFrame {
         examDialog.setVisible(true);
     }//GEN-LAST:event_jMenuItemTakeExamActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        Container contentPane = this.getContentPane();
+        ((CardLayout) contentPane.getLayout()).show(contentPane, "Profile");
+        this.profileJPanel.reload();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -271,6 +291,7 @@ public class ExamSystemFrame extends javax.swing.JFrame {
     private com.ExamSys.frontend.ExamsJPanel examsJPanel;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuExam;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItemAdmins;
     private javax.swing.JMenuItem jMenuItemExams;
     private javax.swing.JMenuItem jMenuItemLogin;
@@ -286,6 +307,7 @@ public class ExamSystemFrame extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuUsers;
     private com.ExamSys.frontend.LoginJPanel loginJPanel;
     private com.ExamSys.frontend.ProblemsJPanel problemsJPanel;
+    private com.ExamSys.frontend.ProfileJPanel profileJPanel;
     private com.ExamSys.frontend.StudentReportPanel studentReportPanel;
     private com.ExamSys.frontend.UsersJPanel usersJPanel;
     // End of variables declaration//GEN-END:variables

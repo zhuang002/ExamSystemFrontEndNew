@@ -314,6 +314,7 @@ public class ExamSystemFrame extends javax.swing.JFrame {
                 this.jMenuItemTakeExam.setVisible(false);
                 this.jMenuItemMyReports.setVisible(false);
                 this.jMenuItemExams.setVisible(true);
+                this.jMenuItemMaintainReports.setVisible(true);
             } else if (Global.currentUser.getRole() == Role.Teacher) {
                 this.jMenuItemAdmins.setVisible(false);
                 this.jMenuItemTeachers.setVisible(false);
@@ -324,6 +325,7 @@ public class ExamSystemFrame extends javax.swing.JFrame {
                 this.jMenuReport.setVisible(true);
                 this.jMenuItemMyReports.setVisible(false);
                 this.jMenuItemExams.setVisible(true);
+                this.jMenuItemMaintainReports.setVisible(true);
             } else {
                 this.jMenuItemAdmins.setVisible(false);
                 this.jMenuItemTeachers.setVisible(false);

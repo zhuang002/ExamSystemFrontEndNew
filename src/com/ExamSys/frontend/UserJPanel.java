@@ -9,8 +9,8 @@ import com.ExamSys.backend.Role;
 import com.ExamSys.backend.User;
 
 /**
- *
- * @author zhuan
+ * The view for a user object to display or edit the user info.
+ * @author yang
  */
 public class UserJPanel extends javax.swing.JPanel {
 
@@ -140,6 +140,12 @@ public class UserJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * The event handler when the New button is clicked.
+     * When the New button is clicked the view fields are cleared and you are 
+     * ready to create a new user.
+     * @param evt The evnet object. 
+     */
     private void jButtonNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewActionPerformed
         // TODO add your handling code here:
         clear();
@@ -150,6 +156,12 @@ public class UserJPanel extends javax.swing.JPanel {
         this.jButtonDelete.setEnabled(false);
     }//GEN-LAST:event_jButtonNewActionPerformed
 
+    /**
+     * The event handler when the Update/Add button is clicked.
+     * When this button is clicked, the newly input data is going to be saved
+     * into the database.
+     * @param evt The event handler.
+     */
     private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
         // TODO add your handling code here:
         if (this.jButtonUpdate.getText().equals("Add")) {
@@ -169,6 +181,12 @@ public class UserJPanel extends javax.swing.JPanel {
         this.user=null;
     }//GEN-LAST:event_jButtonUpdateActionPerformed
 
+    /**
+     * The event handler when the Delete button is clicked.
+     * When this button is clicked the current selected user is to be deleted
+     * from the database.
+     * @param evt The event object.
+     */
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
         // TODO add your handling code here:
         if (this.user!=null) {
@@ -196,6 +214,11 @@ public class UserJPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private User user=null;
+    
+    /**
+     * Relate a user to this view. This is the current user to be viewed/edited.
+     * @param u The User object.
+     */
     void setUser(User u) {
         this.user=u;
         this.jTextFieldUsername.setText(this.user.getUserName());
@@ -208,6 +231,10 @@ public class UserJPanel extends javax.swing.JPanel {
         setReadonly(false);
     }
 
+    /**
+     * Set this view to be read only
+     * @param readOnly True for readonly and false for editable.
+     */
     void setReadonly(boolean readOnly) {
         this.jTextFieldName.setEnabled(!readOnly);
         this.jTextFieldUsername.setEnabled(false);
@@ -218,6 +245,9 @@ public class UserJPanel extends javax.swing.JPanel {
         this.jButtonUpdate.setEnabled(!readOnly);
     }
 
+    /**
+     * Clear all the fields of this view.
+     */
     private void clear() {
         this.jTextFieldName.setText("");
         this.jTextFieldUsername.setText("");
@@ -225,6 +255,10 @@ public class UserJPanel extends javax.swing.JPanel {
         this.jPasswordFieldPassword.setText("");
     }
 
+    /**
+     * Set the user role field which is a comboBox.
+     * @param role The role of the related user.
+     */
     void setRole(Role role) {
         this.jComboBoxRole.setSelectedIndex(role.getValue());
     }

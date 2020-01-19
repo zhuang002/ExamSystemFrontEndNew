@@ -17,8 +17,8 @@ import java.util.Date;
 import java.util.List;
 
 /**
- *
- * @author zhuan
+ * The taking exam wizard view for an exam.
+ * @author Andy
  */
 public class ExamWizardJPanel extends javax.swing.JPanel {
 
@@ -153,6 +153,10 @@ public class ExamWizardJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * The event handler when a checkbox for an answer is clicked.
+     * @param evt The event object.
+     */
     private void jCheckBoxAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxAActionPerformed
         // TODO add your handling code here:
         this.jCheckBoxB.setSelected(false);
@@ -220,10 +224,14 @@ public class ExamWizardJPanel extends javax.swing.JPanel {
     private javax.swing.JTextArea jTextAreaProblem;
     // End of variables declaration//GEN-END:variables
 
-    Exam exam = null;
-    int currentPage = 0;
-    int[] answers;
+    private Exam exam = null;
+    private int currentPage = 0;
+    private int[] answers;
 
+    /**
+     * relate the wizard view with an exam.
+     * @param ex The exam object.
+     */
     void setExam(Exam ex) {
         if (ex==null) {
             this.clear();
@@ -236,6 +244,9 @@ public class ExamWizardJPanel extends javax.swing.JPanel {
         setCurrentPage();
     }
 
+    /**
+     * Set contents for current problem.
+     */
     private void setCurrentPage() {
         if (this.exam.getProblems().isEmpty()) {
             this.clear();
@@ -254,6 +265,9 @@ public class ExamWizardJPanel extends javax.swing.JPanel {
         this.jButtonNext.setEnabled(this.currentPage != this.exam.getProblems().size() - 1);
     }
 
+    /**
+     * Clear the view content.
+     */
     private void clear() {
         this.exam=null;
         this.currentPage=0;
@@ -262,6 +276,10 @@ public class ExamWizardJPanel extends javax.swing.JPanel {
         this.clearAnswers();
     }
 
+    /**
+     * Make the view readOnly.
+     * @param b If true, the view will be read only, else editable.
+     */
     private void setReadonly(boolean b) {
         this.jButtonNext.setEnabled(!b);
         this.jButtonPrevious.setEnabled(!b);
@@ -272,6 +290,10 @@ public class ExamWizardJPanel extends javax.swing.JPanel {
         this.jCheckBoxD.setEnabled(!b);
     }
 
+    /**
+     * Auto generate a report.
+     * @return The report generated. 
+     */
     private Report createReport() {
         if (this.exam==null) return null;
         Report report=new Report();
@@ -300,6 +322,10 @@ public class ExamWizardJPanel extends javax.swing.JPanel {
         return report;
     }
 
+    /**
+     * Get the user input answer from the UI for the current problem.
+     * @return the id of the user input answers. 1 for A, 2 for B, 3 for C, 4 for D and 0 for no answer.
+     */
     private int getCurrentAnswer() {
         if (this.jCheckBoxA.isSelected()) return 1;
         else if (this.jCheckBoxB.isSelected()) return 2;
@@ -308,6 +334,10 @@ public class ExamWizardJPanel extends javax.swing.JPanel {
         else return 0;
     }
 
+    /**
+     * Modify the checkboxes with an answer
+     * @param answer 
+     */
     private void setCurrentAnswer(int answer) {
         this.clearAnswers();
         switch(answer) {
@@ -324,6 +354,9 @@ public class ExamWizardJPanel extends javax.swing.JPanel {
         }
     }
 
+    /**
+     * Clear all the checkboxes.
+     */
     private void clearAnswers() {
         this.jCheckBoxA.setSelected(false);
         this.jCheckBoxB.setSelected(false);

@@ -10,8 +10,8 @@ import com.ExamSys.backend.User;
 import java.awt.CardLayout;
 
 /**
- *
- * @author zhuan
+ * The Login View.
+ * @author Andy
  */
 public class LoginJPanel extends javax.swing.JPanel {
 
@@ -124,10 +124,18 @@ public class LoginJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField jTextFieldUsername;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Show the error message when input data not valid.
+     * @param msg 
+     */
     public void showMessage(String msg) {
         this.jLabelMessage.setText(msg);
     }
 
+    /**
+     * Get the first view to be displayed for the logged in user according to his/her role.
+     * @return the card name of the view panel.
+     */
     private String getFirstCard() {
         if (null!=Global.currentUser.getRole()) switch (Global.currentUser.getRole()) {
             case Admin:
@@ -142,6 +150,9 @@ public class LoginJPanel extends javax.swing.JPanel {
         return "Login";
     }
 
+    /**
+     * Clear the login view fields.
+     */
     void clear() {
         this.jTextFieldUsername.setText("");
         this.jPasswordFieldPassword.setText("");

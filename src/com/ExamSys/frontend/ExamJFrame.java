@@ -6,8 +6,8 @@
 package com.ExamSys.frontend;
 
 /**
- *
- * @author zhuan
+ * The pop up window for taking exam.
+ * @author Andy
  */
 public class ExamJFrame extends javax.swing.JFrame {
 
@@ -48,6 +48,9 @@ public class ExamJFrame extends javax.swing.JFrame {
     private com.ExamSys.frontend.ExamWizardJPanel examWizardJPanel;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * reload contents of sub components.
+     */
     void reload() {
         this.chooseExamJPanel.reload();
     }

@@ -9,10 +9,16 @@ import com.ExamSys.backend.User;
 import javax.swing.JFrame;
 
 /**
- *
- * @author zhuan
+ * The global variables.
+ * @author andy
  */
 public class Global {
+    /**
+     * The current user.
+     */
     static User currentUser=null;
+    /**
+     * The top window frame object.
+     */
     static JFrame mainFrame=null;
 }

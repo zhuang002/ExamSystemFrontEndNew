@@ -6,8 +6,8 @@
 package com.ExamSys.frontend;
 
 /**
- *
- * @author zhuan
+ * The dialog window for a student to take an exam.
+ * @author yang
  */
 public class TakeExamJDialog extends javax.swing.JDialog {
 
@@ -48,6 +48,9 @@ public class TakeExamJDialog extends javax.swing.JDialog {
     private com.ExamSys.frontend.ReportJPanel reportJPanel;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Reload all contents for the dialog view.
+     */
     void reload() {
         this.chooseExamJPanel.reload();
     }

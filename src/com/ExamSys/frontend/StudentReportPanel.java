@@ -12,8 +12,10 @@ import java.util.List;
 import javax.swing.DefaultListModel;
 
 /**
- *
- * @author zhuan
+ * The report maintanence view.
+ * It has a left list of students allowing user to select a student's reports to be maintained.
+ * And then user can select one of the student's reports to be viewed.
+ * @author yang
  */
 public class StudentReportPanel extends javax.swing.JPanel {
 
@@ -86,6 +88,10 @@ public class StudentReportPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     private List<User> students=null;
     
+    /**
+     * Reload the left students list and reload the subviews. 
+     * This is used by an admin or a teacher who wants to see all students' reports.
+     */
     void reload() {
         if (Global.currentUser==null) {
             this.clear();
@@ -103,6 +109,12 @@ public class StudentReportPanel extends javax.swing.JPanel {
         this.reportsJPanel.setStudent(null);
     }
 
+    /**
+     * Reload only one student into the view. 
+     * This is used when a student user is to view the reports. He/she can only view his/her
+     * own reports.
+     * @param student 
+     */
     void reload(User student) {
         this.students=new ArrayList<>();
         this.students.add(student);

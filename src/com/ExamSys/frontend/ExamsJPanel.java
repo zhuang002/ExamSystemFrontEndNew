@@ -12,8 +12,8 @@ import javax.swing.DefaultListModel;
 import javax.swing.ListModel;
 
 /**
- *
- * @author zhuan
+ * The view for a left pane to display exams to be selected and a right pane for the info of the selected exam.
+ * @author Andy
  */
 public class ExamsJPanel extends javax.swing.JPanel {
 
@@ -74,6 +74,10 @@ public class ExamsJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * The event handler when an exam on the left list is selected.
+     * @param evt The event object.
+     */
     private void jListExamsValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListExamsValueChanged
         // TODO add your handling code here:
         if (!evt.getValueIsAdjusting()) {
@@ -85,6 +89,9 @@ public class ExamsJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jListExamsValueChanged
 
+    /**
+     * Reload all exams into the left list and clear the right info pane.
+     */
     public void reload() {
         DefaultListModel examListModel=new DefaultListModel();
         this.exams=Exam.getAllExams();
@@ -101,5 +108,5 @@ public class ExamsJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSplitPane jSplitPane1;
     // End of variables declaration//GEN-END:variables
-    List<Exam> exams=null;
+    private List<Exam> exams=null;
 }

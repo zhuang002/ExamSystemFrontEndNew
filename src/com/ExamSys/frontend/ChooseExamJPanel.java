@@ -12,8 +12,8 @@ import java.util.List;
 import javax.swing.DefaultListModel;
 
 /**
- *
- * @author zhuan
+ * The view panel allow user to select an exam to take.
+ * @author andy
  */
 public class ChooseExamJPanel extends javax.swing.JPanel {
 
@@ -77,6 +77,10 @@ public class ChooseExamJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * The event handler to start the selected exam.
+     * @param evt the event object.
+     */
     private void jButtonStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStartActionPerformed
         // TODO add your handling code here:
         int idx=this.jListExams.getSelectedIndex();
@@ -96,7 +100,11 @@ public class ChooseExamJPanel extends javax.swing.JPanel {
     private javax.swing.JList<String> jListExams;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
-    List<Exam> exams;
+    private List<Exam> exams;
+    
+    /**
+     * reload all available exams into the list for user to choose.
+     */
     void reload() {
         this.exams=Exam.getAllAvailableExams(Global.currentUser);
         DefaultListModel model=new DefaultListModel();

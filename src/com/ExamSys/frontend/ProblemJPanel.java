@@ -16,8 +16,8 @@ import javax.swing.JOptionPane;
 import javax.swing.ListModel;
 
 /**
- *
- * @author zhuan
+ * The View for contents of a problem object.
+ * @author Andy
  */
 public class ProblemJPanel extends javax.swing.JPanel {
 
@@ -247,8 +247,11 @@ public class ProblemJPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     private Problem problem;
 
-    
-    void setProblem(Problem p) {
+    /**
+     * Relate a problem object with the view.
+     * @param p The problem object.
+     */
+    public void setProblem(Problem p) {
         this.problem=p;
         if (p==null) return;
         this.jTextFieldId.setText(""+this.problem.getID());
@@ -264,6 +267,10 @@ public class ProblemJPanel extends javax.swing.JPanel {
         this.jButtonUpdateProblem.setEnabled(true);
     }
 
+    /**
+     * Make this view read only.
+     * @param b True to make the view readonly. False to make view editable.
+     */
     public void setReadonly(boolean b) {
         this.jTextFieldId.setEnabled(false);
         this.jTextFieldName.setEnabled(!b);
@@ -276,6 +283,9 @@ public class ProblemJPanel extends javax.swing.JPanel {
         this.jButtonNewSection.setEnabled(!b);
     }
 
+    /**
+     * Clear all the fields of the view.
+     */
     void clear() {
         
         this.jTextFieldId.setText("");

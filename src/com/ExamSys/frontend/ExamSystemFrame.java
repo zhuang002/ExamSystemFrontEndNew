@@ -10,8 +10,8 @@ import java.awt.CardLayout;
 import java.awt.Container;
 
 /**
- *
- * @author zhuan
+ * The top frame of the UI application.
+ * @author andy
  */
 public class ExamSystemFrame extends javax.swing.JFrame {
 
@@ -177,6 +177,10 @@ public class ExamSystemFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * The event handler when select the Maintain Exams menu item.
+     * @param evt The event object.
+     */
     private void jMenuItemExamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemExamsActionPerformed
         // TODO add your handling code here:
         Container contentPane = this.getContentPane();
@@ -184,6 +188,10 @@ public class ExamSystemFrame extends javax.swing.JFrame {
         this.examsJPanel.reload();
     }//GEN-LAST:event_jMenuItemExamsActionPerformed
 
+    /**
+     * The event handler when select the Maintain Problems menu item.
+     * @param evt The event object.
+     */
     private void jMenuItemProblemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProblemsActionPerformed
         // TODO add your handling code here:
         Container contentPane = this.getContentPane();
@@ -191,6 +199,10 @@ public class ExamSystemFrame extends javax.swing.JFrame {
         this.problemsJPanel.reload();
     }//GEN-LAST:event_jMenuItemProblemsActionPerformed
 
+    /**
+     * The event handler when User->Admin menu item is selected.
+     * @param evt The event object.
+     */
     private void jMenuItemAdminsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAdminsActionPerformed
         // TODO add your handling code here:
         Container contentPane = this.getContentPane();
@@ -198,6 +210,10 @@ public class ExamSystemFrame extends javax.swing.JFrame {
         this.usersJPanel.setRole(Role.Admin);
     }//GEN-LAST:event_jMenuItemAdminsActionPerformed
 
+    /**
+     * The event handler when select the User->Teachers menu item.
+     * @param evt the event object.
+     */
     private void jMenuItemTeachersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTeachersActionPerformed
         // TODO add your handling code here:
         Container contentPane = this.getContentPane();
@@ -205,6 +221,10 @@ public class ExamSystemFrame extends javax.swing.JFrame {
         this.usersJPanel.setRole(Role.Teacher);
     }//GEN-LAST:event_jMenuItemTeachersActionPerformed
 
+    /**
+     * The event handler when the User->Students menu item is selected.
+     * @param evt The event object.
+     */
     private void jMenuItemStudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemStudentsActionPerformed
         // TODO add your handling code here:
         Container contentPane = this.getContentPane();
@@ -212,6 +232,10 @@ public class ExamSystemFrame extends javax.swing.JFrame {
         this.usersJPanel.setRole(Role.Student);
     }//GEN-LAST:event_jMenuItemStudentsActionPerformed
 
+    /**
+     * The event handler when Report->Maintain Reports menu item is selected.
+     * @param evt The event object.
+     */
     private void jMenuItemMaintainReportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMaintainReportsActionPerformed
         // TODO add your handling code here:
         Container contentPane = this.getContentPane();
@@ -219,6 +243,10 @@ public class ExamSystemFrame extends javax.swing.JFrame {
         this.studentReportPanel.reload();
     }//GEN-LAST:event_jMenuItemMaintainReportsActionPerformed
 
+    /**
+     * The event handler when Report->My Reports menu item is selected.
+     * @param evt The event object.
+     */
     private void jMenuItemMyReportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMyReportsActionPerformed
         // TODO add your handling code here:
         Container contentPane = this.getContentPane();
@@ -312,6 +340,9 @@ public class ExamSystemFrame extends javax.swing.JFrame {
     private com.ExamSys.frontend.UsersJPanel usersJPanel;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Initilaize the menu bar visibility according to current user role.
+     */
     public void initMenus() {
         if (Global.currentUser == null) {
             this.jMenuItemLogin.setVisible(true);
@@ -363,6 +394,9 @@ public class ExamSystemFrame extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Set the sub panel's appearance according to current user role.
+     */
     public void setUsersCardRole() {
         if (Global.currentUser.getRole()==Role.Admin) {
             this.usersJPanel.setRole(Role.Teacher);
@@ -374,6 +408,9 @@ public class ExamSystemFrame extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Reloads the report panel contents.
+     */
     void reloadReport() {
         this.studentReportPanel.reload();
     }

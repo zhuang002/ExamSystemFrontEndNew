@@ -9,8 +9,8 @@ import com.ExamSys.backend.User;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author zhuan
+ * The profile edit view.
+ * @author yang
  */
 public class ProfileJPanel extends javax.swing.JPanel {
 
@@ -150,6 +150,10 @@ public class ProfileJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField jTextFieldName;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Retrieve the content from the view and fill in a User object.
+     * @return A user object that has been filled with details.
+     */
     private User retrieveUser() {
         User user = new User();
         user.setUserName(Global.currentUser.getUserName());
@@ -159,6 +163,9 @@ public class ProfileJPanel extends javax.swing.JPanel {
         return user;
     }
 
+    /**
+     * Reload current user info into this view.
+     */
     public void reload() {
         this.jTextFieldName.setText(Global.currentUser.getName());
         this.jPasswordFieldConfirmPassword.setText("");
@@ -167,6 +174,10 @@ public class ProfileJPanel extends javax.swing.JPanel {
         this.setReadOnly(true);
     }
 
+    /**
+     * Set this view read only
+     * @param b True for read only. False for editable.
+     */
     private void setReadOnly(boolean b) {
         this.jTextFieldName.setEnabled(!b);
         this.jPasswordFieldConfirmPassword.setEnabled(!b);

@@ -44,8 +44,7 @@ deleted. Same thing applies to all entries. But these 'deleted' entries will not
 
 Features not implemented:
 1. Student self registration.
-2. Student modify his password and name.
-3. Teacher modify the reports.
+2. Teacher modify the reports.
 
 As a demo project it is quite sophisticated and complete. Enjoy it.
 

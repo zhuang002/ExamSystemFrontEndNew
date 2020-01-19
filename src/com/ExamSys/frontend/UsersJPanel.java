@@ -11,8 +11,11 @@ import java.util.List;
 import javax.swing.DefaultListModel;
 
 /**
- *
- * @author zhuan
+ * The View to maintain multiple users. 
+ * It has a left list which contains multiple users who might be admins, teachers,
+ * or students. The right pane is to display the user info if the user is selected 
+ * in the left list.
+ * @author Yang
  */
 public class UsersJPanel extends javax.swing.JPanel {
 
@@ -65,6 +68,10 @@ public class UsersJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * The event handler when a user in left list is selected.
+     * @param evt The event object.
+     */
     private void jListUsersValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListUsersValueChanged
         // TODO add your handling code here:
         if (!evt.getValueIsAdjusting()) {
@@ -84,24 +91,26 @@ public class UsersJPanel extends javax.swing.JPanel {
     private com.ExamSys.frontend.UserJPanel userJPanel;
     // End of variables declaration//GEN-END:variables
     private Role userRole=Role.Student;
-    List<User> users=null;
+    private List<User> users=null;
     
+    /**
+     * Relate a role to this view.
+     * If Admin role is related, the view will only display admins in left list.
+     * In a same way teachers or students are displayed in left list when role is 
+     * set.
+     * @param role 
+     */
     void setRole(Role role) {
         this.userRole=role;
         reload();
         this.userJPanel.setRole(role);
         this.userJPanel.setReadonly(true);
         
-        /*if (Global.currentUser.getRole()==Role.Admin) {
-            this.userJPanel.setReadonly(false);
-        } else if (Global.currentUser.getRole()==Role.Teacher &&
-                this.userRole==Role.Student) {
-            this.userJPanel.setReadonly(false);
-        } else {
-            this.userJPanel.setReadonly(true);
-        }*/
     }
     
+    /**
+     * Reload this view.
+     */
     public void reload() {
         DefaultListModel listModel=new DefaultListModel();
         this.users=User.getAllUsers(this.userRole);

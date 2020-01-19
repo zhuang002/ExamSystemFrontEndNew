@@ -18,8 +18,8 @@ import javax.swing.JOptionPane;
  */
 
 /**
- *
- * @author zhuan
+ * the panel for user to read/update information of an Exam.
+ * @author andy
  */
 public class ExamJPanel extends javax.swing.JPanel {
 
@@ -165,6 +165,10 @@ public class ExamJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * The event handler when the Update button is clicked.
+     * @param evt The event object.
+     */
     private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
         // TODO add your handling code here:
         if (this.jTextFieldDescription.getText().isBlank()) {
@@ -188,12 +192,20 @@ public class ExamJPanel extends javax.swing.JPanel {
         ((ExamsJPanel)this.getParent().getParent()).reload();
     }//GEN-LAST:event_jButtonUpdateActionPerformed
 
+    /**
+     * The event handler when Delete button is clicked.
+     * @param evt the event object.
+     */
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
         // TODO add your handling code here:
         this.exam.remove();
         ((ExamsJPanel)this.getParent().getParent()).reload();
     }//GEN-LAST:event_jButtonDeleteActionPerformed
 
+    /**
+     * The event handler when the New button is clicked.
+     * @param evt the event object.
+     */
     private void jButtonNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewActionPerformed
         // TODO add your handling code here:
         this.clear();
@@ -203,6 +215,11 @@ public class ExamJPanel extends javax.swing.JPanel {
         this.newProblems.clear();
     }//GEN-LAST:event_jButtonNewActionPerformed
 
+    /**
+     * The event handler when the Delete Problem button is clicked. 
+     * It will remove the selected problem from the exam.
+     * @param evt the event object.
+     */
     private void jButtonDeleteProblemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteProblemActionPerformed
         // TODO add your handling code here:
         int idx=this.jListProblems.getSelectedIndex();
@@ -212,6 +229,11 @@ public class ExamJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButtonDeleteProblemActionPerformed
 
+    /**
+     * The event handler when the Add Problem button is clicked.
+     * It will add a new problem to the exam.
+     * @param evt The event object.
+     */
     private void jButtonAddProblemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddProblemActionPerformed
         // TODO add your handling code here:
         ExamAddProblemJDialog dialog=new ExamAddProblemJDialog(Global.mainFrame,true);
@@ -241,6 +263,11 @@ public class ExamJPanel extends javax.swing.JPanel {
     private Exam exam=null;
     List<ProblemScore> newProblems=new ArrayList();
     
+    /**
+     * Relate the exam object with this view. 
+     * Fill the fields with information from the exam object.
+     * @param ex The exam object.
+     */
     public void setExam(Exam ex) {
         if (ex==null) {
             this.exam=null;
@@ -298,6 +325,9 @@ public class ExamJPanel extends javax.swing.JPanel {
         }
     }
 
+    /**
+     * Clear all the fields of the panel.
+     */
     private void clear() {
         this.jTextFieldID.setText("");
         this.jTextFieldDescription.setText("");
@@ -307,6 +337,10 @@ public class ExamJPanel extends javax.swing.JPanel {
         this.exam=null;
     }
 
+    /**
+     * Set the panel fields to be enabled or disabled.
+     * @param b When true, the panel fields are disabled. When false the panel is readonly.
+     */
     private void setReadonly(boolean b) {
         this.jTextFieldDescription.setEnabled(!b);
         this.jComboBoxDuration.setEnabled(!b);

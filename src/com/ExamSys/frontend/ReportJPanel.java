@@ -13,8 +13,8 @@ import javax.swing.table.DefaultTableModel;
 
 
 /**
- *
- * @author zhuan
+ * The view for a report object.
+ * @author yang
  */
 public class ReportJPanel extends javax.swing.JPanel {
 
@@ -151,6 +151,11 @@ public class ReportJPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private Report report=null;
+    
+    /**
+     * Relate a report object to this view.
+     * @param rep The report object.
+     */
     void setReport(Report rep) {
         if (rep==null) {
             this.report=null;
@@ -178,6 +183,9 @@ public class ReportJPanel extends javax.swing.JPanel {
         }
     }
 
+    /**
+     * Clear the fields of this view.
+     */
     private void clear() {
         this.jTextFieldExam.setText("");
         this.jTextFieldScore.setText("");

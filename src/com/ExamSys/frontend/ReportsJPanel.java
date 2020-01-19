@@ -11,8 +11,9 @@ import java.util.List;
 import javax.swing.DefaultListModel;
 
 /**
- *
- * @author zhuan
+ * The view to view all reports with a left list contains all reports for user to select 
+ * and the right pane contains the view to show the selected report.
+ * @author yang
  */
 public class ReportsJPanel extends javax.swing.JPanel {
 
@@ -89,6 +90,12 @@ public class ReportsJPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private List<Report> reports=null;
+    
+    /**
+     * Relate a student user to this view. 
+     * It will read all the reports of this student and fill the left list.
+     * @param student The Student object.
+     */
     void setStudent(User student) {
         if (student==null) {
             if (this.reports!=null) {
@@ -109,6 +116,9 @@ public class ReportsJPanel extends javax.swing.JPanel {
         }
     }
 
+    /**
+     * Clear the current view and its sub views.
+     */
     public void clear() {
         ((DefaultListModel)this.jListReports.getModel()).clear();
         this.reportJPanel.setReport(null);

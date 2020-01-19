@@ -10,8 +10,8 @@ import java.util.List;
 import javax.swing.DefaultListModel;
 
 /**
- *
- * @author zhuan
+ * The view for edit with a left list contains all problems to select and a right pane to edit the selected problem.
+ * @author yang
  */
 public final class ProblemsJPanel extends javax.swing.JPanel {
 
@@ -64,6 +64,10 @@ public final class ProblemsJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * The event handler when a problem in the left list is selected.
+     * @param evt The event object.
+     */
     private void jListProblemsValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListProblemsValueChanged
         // TODO add your handling code here:
         int idx=this.jListProblems.getSelectedIndex();
@@ -81,8 +85,11 @@ public final class ProblemsJPanel extends javax.swing.JPanel {
     private com.ExamSys.frontend.ProblemJPanel problemJPanel;
     // End of variables declaration//GEN-END:variables
 
-    List<Problem> problems=null;
+    private List<Problem> problems=null;
     
+    /**
+     * Reload the left problem list and clear the right problem info page.
+     */
     public void reload() {
         DefaultListModel listModel=new DefaultListModel();
         this.problems=Problem.getAllProblems();
